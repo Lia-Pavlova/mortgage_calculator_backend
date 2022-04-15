@@ -51,7 +51,7 @@ process.on('SIGINT', async () => {
   process.exit(1)
 })
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 5000
 
 db.then(() => {
   app.listen(PORT, async () => {

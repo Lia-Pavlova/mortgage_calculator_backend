@@ -8,7 +8,7 @@ const login = async (req, res, next) => {
     const { email, password } = req.body
     const user = await authService.getUser(email, password)
     if (!user) {
-      return res.status(HttpCode.UNAUTHORIZED).json({
+      return res.status(HttpCode.BAD_REQUEST).json({
         status: 'error',
         code: HttpCode.BAD_REQUEST,
         message: 'Invalid credentials',
@@ -19,7 +19,7 @@ const login = async (req, res, next) => {
     res.status(HttpCode.OK).json({
       status: 'success',
       code: HttpCode.OK,
-      userData: { token, email },
+      data: { token, email },
     })
   } catch (err) {
     return res.status(HttpCode.INTERNAL_SERVER_ERROR).json({
